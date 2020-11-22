@@ -1,4 +1,8 @@
 let ticker = ''
+let price = ''
+let dcf = ''
+let priceNumber = 0.0
+let dcfNumber = 0.0
 
 function displayData() {
     ticker = document.getElementById("stockName").value.toUpperCase();
@@ -14,25 +18,23 @@ function displayData() {
         'https://financialmodelingprep.com/api/v3/discounted-cash-flow/' + ticker + "?apikey=c666ff95d41eef82744356cb28a0c041",
         drawDCFOutput
     );
-
-    // calculate margin of safety
-    let priceData = document.getElementById("currentPrice").innerHTML;
-    let dcfData = document.getElementById("DCF").innerHTML;
-    let priceNumber = parseFloat(priceData)
-    let dcfNumber = parseFloat(dcfData)
-    let marginOfSafey = priceNumber - dcfNumber
-    document.getElementById("marginOfSafety").innerHTML = marginOfSafey
 }
+    
 function drawPriceOutput(responseText) {
     let companyProfile = [JSON.parse(responseText).profile];
-    let price = companyProfile[0].price
+    price = companyProfile[0].price
+    priceNumber = parseFloat(price)
     document.getElementById("currentPrice").innerHTML = price
 }
 function drawDCFOutput(responseText) {
     let companyProfile = JSON.parse(responseText);
-    let dcf = companyProfile[0].dcf
+    dcf = companyProfile[0].dcf
+    dcfNumber = parseFloat(dcf)
     document.getElementById("DCF").innerHTML = dcf
+    let marginOfSafey = priceNumber - dcfNumber
+    document.getElementById("marginOfSafety").innerHTML = marginOfSafey
 }
+
 
 // Get URL Request from Financial Modelling Prep
 function getRequest(url, success) {
