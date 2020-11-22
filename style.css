@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+}
+
+main {
+    background-color: white;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+header {
+    text-align: center;
+    padding: 15px;
+}
+
+#introduction {
+
+}
+
+form {
+
+}
+
+#stockName {
+    text-transform: uppercase;
+}
+
+#data {
+    padding: 20px 0px 10px 0px;
+}
