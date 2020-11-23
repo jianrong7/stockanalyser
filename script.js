@@ -1,9 +1,6 @@
 let ticker = ''
 let price = ''
 let dcf = ''
-let priceNumber = 0.0
-let dcfNumber = 0.0
-let marginOfSafety = 0.0
 
 function displayData() {
     ticker = document.getElementById("stockName").value.toUpperCase();
@@ -20,23 +17,19 @@ function displayData() {
         drawDCFOutput
     );
     setTimeout(getRequest, 0)
-    document.getElementById("marginOfSafety").innerHTML = priceNumber - dcfNumber
-
+    document.getElementById("marginOfSafety").innerHTML = price - dcf
 }
 
 function drawPriceOutput(responseText) {
     let companyProfile = [JSON.parse(responseText).profile];
     price = companyProfile[0].price
-    priceNumber = parseFloat(price)
     document.getElementById("currentPrice").innerHTML = price
 }
 function drawDCFOutput(responseText) {
     let companyProfile = JSON.parse(responseText);
     dcf = companyProfile[0].dcf
-    dcfNumber = parseFloat(dcf)
     document.getElementById("DCF").innerHTML = dcf
 }
-
 
 // Get URL Request from Financial Modelling Prep
 function getRequest(url, success) {
