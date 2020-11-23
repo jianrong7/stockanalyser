@@ -25,12 +25,12 @@ async function displayData() {
 function drawPriceOutput(responseText) {
     let companyProfile = [JSON.parse(responseText).profile];
     price = companyProfile[0].price
-    document.getElementById("currentPrice").innerHTML = Math.round(price * 100) / 100
+    document.getElementById("currentPrice").innerHTML = price
 }
 function drawDCFOutput(responseText) {
     let companyProfile = JSON.parse(responseText);
     dcf = companyProfile[0].dcf
-    document.getElementById("DCF").innerHTML = dcf
+    document.getElementById("DCF").innerHTML = Math.round(dcf * 100) / 100
 }
 
 // Get URL Request from Financial Modelling Prep
