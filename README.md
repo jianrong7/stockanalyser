@@ -11,7 +11,6 @@ Website available [here](https://jianrong7.github.io/stockanalyser/)
 * Margin of Safety calculated from these two values.
 
 ---
-* Currently, there are async problems.
 * Looking to add ticker logo everytime a ticker is added.
 * Looking to analyse current news sentiment through finviz.
 * Open to design suggestions and upgrades.
