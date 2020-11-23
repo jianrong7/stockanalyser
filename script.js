@@ -1,8 +1,9 @@
 let ticker = ''
 let price = ''
 let dcf = ''
+let counter = 0
 
-function displayData() {
+async function displayData() {
     ticker = document.getElementById("stockName").value.toUpperCase();
 
     // get currentPrice data
@@ -16,14 +17,15 @@ function displayData() {
         'https://financialmodelingprep.com/api/v3/discounted-cash-flow/' + ticker + "?apikey=c666ff95d41eef82744356cb28a0c041",
         drawDCFOutput
     );
-    setTimeout(getRequest, 0)
-    document.getElementById("marginOfSafety").innerHTML = price - dcf
+    await new Promise(r => setTimeout(r, 1000));
+    let marginOfSafety = ((price - dcf) / price) * 100
+    document.getElementById("marginOfSafety").innerHTML = Math.round(marginOfSafety * 100) / 100 + "%"
 }
 
 function drawPriceOutput(responseText) {
     let companyProfile = [JSON.parse(responseText).profile];
     price = companyProfile[0].price
-    document.getElementById("currentPrice").innerHTML = price
+    document.getElementById("currentPrice").innerHTML = Math.round(price * 100) / 100
 }
 function drawDCFOutput(responseText) {
     let companyProfile = JSON.parse(responseText);

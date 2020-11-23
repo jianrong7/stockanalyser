@@ -11,7 +11,7 @@
 	<title>Stock Analyser</title>
   </head>
   <body>
-	<main class='container'>
+	<main class='container-md'>
 		<header>
 			<h1>Stock Analyser</h1>
 			<h5>Developed by junior7</h5>
@@ -25,37 +25,40 @@
 		</div>
 
 		<hr>
-
-		<form id="ticker" onsubmit="return false;">
-			<div class="form-group">
-				<label for="stockName">What stock do you want to know about?</label>
-				<input type="text" class="form-control" pattern="[a-zA-Z0-9-]+" id="stockName" aria-describedby="stockHelp">
-				<small id="stockHelp" class="form-text text-muted">Insert the ticker symbol here. (Eg. AAPL)</small>
+		<div class='row'>
+			<div class='col-sm'>
+				<form id="ticker" onsubmit="return false;">
+					<div class="form-group">
+						<label for="stockName">What stock do you want to know about?</label>
+						<input type="text" class="form-control" pattern="[a-zA-Z0-9-]+" id="stockName" aria-describedby="stockHelp">
+						<small id="stockHelp" class="form-text text-muted">Insert the ticker symbol here. (Eg. AAPL)</small>
+					</div>
+					<button type="submit" class="btn btn-primary" onclick="displayData();">Submit</button>
+				</form>
 			</div>
-			<button type="submit" class="btn btn-primary" onclick="displayData();">Submit</button>
-		</form>
-
-		<div id="data">
-			<table class="table table-striped">
-				<thead>
-				  <tr>
-					<th scope="col">Current Price:</th>
-					<td class="form-data" id="currentPrice"></td>
-				  </tr>
-				</thead>
-				<tbody>
-				  <tr>
-					<th scope="row">Discounted Cash Flow:</th>
-					<td class="form-data" id="DCF"></td>
-				  </tr>
-				  <tr>
-					<th scope="row">Margin of Safety:</th>
-					<td class="form-data" id="marginOfSafety"></td>
-				  </tr>
-				</tbody>
-			</table>
+			<div class='col-sm'>
+				<div id="data">
+					<table class="table table-striped">
+						<thead>
+						  <tr>
+							<th scope="col">Current Price:</th>
+							<td class="form-data" id="currentPrice"></td>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<th scope="row">Discounted Cash Flow:</th>
+							<td class="form-data" id="DCF"></td>
+						  </tr>
+						  <tr>
+							<th scope="row">Margin of Safety:</th>
+							<td class="form-data" id="marginOfSafety"></td>
+						  </tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-		<div class="stock-name"></div>
 	</main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
